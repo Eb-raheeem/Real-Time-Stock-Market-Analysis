@@ -2,7 +2,7 @@ services:
   spark-master:
     image: spark:3.5.1-python3
     container_name: spark-master
-    command: [ "opt/spark/bin/spark-class", "org.apache.spark.deploy.master.Master", "--host", "spark-master", "--port", "7077", "--webui-port", "8080" ]
+    command: [ "/opt/spark/bin/spark-class", "org.apache.spark.deploy.master.Master", "--host", "spark-master", "--port", "7077", "--webui-port", "8080" ]
     environment:
       - SPARK_MODE=master
       - SPARK_MASTER_HOST=spark-master
@@ -18,9 +18,9 @@ services:
   spark-worker:
     image: spark:3.5.1-python3
     container_name: spark-worker
-    command: [ "opt/spark/bin/spark-class", "org.apache.spark.deploy.worker.Worker", "spark://spark-master:7077", "--webui-port", "8081" ]
+    command: [ "/opt/spark/bin/spark-class", "org.apache.spark.deploy.worker.Worker", "spark://spark-master:7077", "--webui-port", "8081" ]
     environment:
-      - SPARK_WORKER_CORES=2=master
+      - SPARK_WORKER_CORES=2
       - SPARK_WORKER_MEMORY=2G
     depends_on:
       - spark-master
@@ -55,7 +55,7 @@ services:
       - "9092:9092" # Broker port
       - "9094:9094" # Controller port
     volumes:
-      - ./kafka-data:/var/lib/kafka/data
+      - kafka_data:/var/lib/kafka/data
     networks:
       - stock_data
 
