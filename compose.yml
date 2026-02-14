@@ -50,7 +50,7 @@ services:
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
       KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
       KAFKA_LOG_DIRS: "/var/lib/kafka/data"
-      CLUSTER_ID: "Bt6TqF2QR0u4xKafxE_Cqg"
+      CLUSTER_ID: "2XEHiTIZTiuhgUr8z4FkfA"
     ports:
       - "9092:9092" # Broker port
       - "9094:9094" # Controller port
