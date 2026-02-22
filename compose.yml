@@ -74,6 +74,22 @@ services:
     networks:
       - stock_data
 
+  #---------------------------------------------------------------------------------------------
+  consumer:
+    build:
+      context: ./consumer
+      dockerfile: Dockerfile
+    image: stream_consumer
+    container_name: consumer
+    depends_on:
+      - spark-master
+      - kafka
+    restart: unless-stopped
+    volumes:
+      - ivy_cache:/opt/spark/work-dir/.ivy2
+      - ./consumer:/opt/spark/work-dir/apps
+    networks:
+      - stock_data
   # ----------------------------------------------------------------------------------------------
   postgres:
     image: debezium/postgres:17
