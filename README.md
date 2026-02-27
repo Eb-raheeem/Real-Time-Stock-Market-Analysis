@@ -46,7 +46,7 @@ The system ensures MarketPulse can deliver reliable, low-latency financial insig
    - Serves as analytics-ready data store  
 
 5. **Analytics Layer**  
-   - Power BI connects to Postgres  
+   - Metabase connects to Postgres  
    - Real-time dashboards visualize trends and metrics  
 
 ---
